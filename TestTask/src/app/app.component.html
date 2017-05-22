@@ -1,0 +1,61 @@
+<div id="main_bg"></div>
+
+<div class="container">
+  <div class="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Site Logo</a>
+      </div>
+
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><p>Already a member?</p></li>
+          <li><a href="#">Log In</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container pt-130">
+  <div class="col-md-6">
+    <h1>
+      Dating with Ukrainian <br>
+      and Russian <span>Beauties.</span>
+    </h1>
+	  <form class="pt-70" #regForm="ngForm">
+		  <div class="contain" [hidden]="this.count != 0 ">
+			  <label for="name" *ngIf="!nameInput.validity.valid">Type your Name</label>
+			  <input [(ngModel)]="this.name" id="name" type="text" name="name" placeholder="Enter Your First Name" #nameInput required>
+			  <span class="label"><i class="fa fa-user" aria-hidden="true"></i> First Name</span>
+			  <button [disabled]="nameInput.className.indexOf('ng-invalid') > 0" (click)="showNext()">NEXT</button>
+		  </div>
+			<div class="contain" [hidden]="this.count != 1 ">
+				<label for="email" *ngIf="!emailInput.validity.valid">Type correct Email</label>
+				<input [(ngModel)]="this.email" id="email" type="text" name="email" placeholder="Enter Your E-mail" required #emailInput>
+				<span class="label"><i class="fa fa-envelope white-text" aria-hidden="true"></i> E-mail</span>
+				<button [disabled]="emailInput.className.indexOf('ng-invalid') > 0" (click)="showNext()">NEXT</button>
+			</div>
+			<div class="contain" [hidden]="this.count != 2 ">
+				<label *ngIf="!passInput.validity.valid" for="password">Type your Password</label>
+				<input [(ngModel)]="this.password" id="password" type="text" name="password" placeholder="Enter Your Password" required #passInput>
+				<span class="label"><i class="fa fa-lock white-text" aria-hidden="true"></i> Password</span>
+				<button (click)="create()" [disabled]="passInput.className.indexOf('ng-invalid') > 0 || emailInput.className.indexOf('ng-invalid') > 0 || passInput.className.indexOf('ng-invalid') > 0">SEND</button>
+				<small>By submitting this form I agree to the <a href="#">terms and conditions</a></small>
+			</div>
+		   </form>
+  </div>
+</div>
+
+<footer class="footer">
+	<div class="foot">
+		<p>General comments or questions: <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></p>
+	</div>
+</footer>
